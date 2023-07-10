@@ -38,4 +38,5 @@ public class KakaoAddressSearchService {
         // kakao api 호출
         return restTemplate.exchange(uri, HttpMethod.GET,httpEntity,KakaoApiResponseDto.class).getBody();
     }
+
 }
