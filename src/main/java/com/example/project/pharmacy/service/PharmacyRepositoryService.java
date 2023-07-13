@@ -23,6 +23,7 @@ public class PharmacyRepositoryService {
         foo(pharmacyList);
     }
 
+
     // self invocation test
     @Transactional
     public void foo(List<Pharmacy> pharmacyList){
@@ -52,6 +53,7 @@ public class PharmacyRepositoryService {
 
         entity.changePharmacyAddress(address);
     }
+
 
     // for test
     public void updateAddressWithoutTransaction(Long id,String address){
