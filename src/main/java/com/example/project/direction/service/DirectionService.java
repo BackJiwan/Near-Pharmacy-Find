@@ -49,6 +49,7 @@ public class DirectionService {
                 .collect(Collectors.toList());
     }
 
+
     // Haversine formula
     private double calculateDistance(double lat1, double lon1, double lat2, double lon2) {
         lat1 = Math.toRadians(lat1);
