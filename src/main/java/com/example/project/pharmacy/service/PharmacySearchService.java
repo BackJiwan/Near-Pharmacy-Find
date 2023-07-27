@@ -37,5 +37,4 @@ public class PharmacySearchService {
                 .longitude(pharmacy.getLongitude())
                 .build();
     }
-
 }
