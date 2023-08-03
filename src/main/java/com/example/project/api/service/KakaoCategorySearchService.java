@@ -2,7 +2,6 @@ package com.example.project.api.service;
 
 import com.example.project.api.dto.KakaoApiResponseDto;
 import lombok.RequiredArgsConstructor;
-
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -24,17 +23,17 @@ public class KakaoCategorySearchService {
 
     private static final String PHARMACY_CATEGORY = "PM9"; // 약국 카테고리
 
-    @Value("${KAKAO_REST_API_KEY}")
+    @Value("${kakao.rest.api.key}")
     private String kakaoRestApiKey;
 
-    public KakaoApiResponseDto requestPharmacyCategorySearch(double latitude,double longitude, double radius){
-        URI uri = kakaoUriBuilderService.buildUriByCategorySearch(latitude,longitude,radius,PHARMACY_CATEGORY);
+    public KakaoApiResponseDto requestPharmacyCategorySearch(double latitude, double longitude, double radius) {
+
+        URI uri = kakaoUriBuilderService.buildUriByCategorySearch(latitude, longitude, radius, PHARMACY_CATEGORY);
+
         HttpHeaders headers = new HttpHeaders();
-        headers.set(HttpHeaders.AUTHORIZATION,"KakaoAK"+kakaoRestApiKey);
+        headers.set(HttpHeaders.AUTHORIZATION, "KakaoAK "+ kakaoRestApiKey);
         HttpEntity httpEntity = new HttpEntity<>(headers);
 
-        return restTemplate.exchange(uri, HttpMethod.GET,httpEntity,KakaoApiResponseDto.class).getBody();
+        return restTemplate.exchange(uri, HttpMethod.GET, httpEntity, KakaoApiResponseDto.class).getBody();
     }
-
-
 }
