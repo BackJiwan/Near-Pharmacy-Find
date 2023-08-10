@@ -60,3 +60,12 @@ dependencies {
 tasks.withType<Test> {
     useJUnitPlatform()
 }
+
+// $ ./gradlew clean build -PKAKAO_REST_API_KEY={api key 값} 명령어로 전체 테스트 및 빌드하여 jar 파일 생성
+tasks.processTestResources {
+    val hasProperty = project.hasProperty("KAKAO_REST_API_KEY")
+    println("Set kakao rest api key: $hasProperty")
+    filesMatching("**/application.yml") {
+        expand(project.properties)
+    }
+}
